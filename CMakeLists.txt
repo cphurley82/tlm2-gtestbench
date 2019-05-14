@@ -3,3 +3,12 @@ project(tlm2-gtestbench VERSION 0.1
                         DESCRIPTION "TLM2 testbench using Google's C++ test framework."
                         LANGUAGES CXX)
 add_executable(run-tests run_tests.cc)
+
+# SystemC
+add_subdirectory(ext/systemc)
+target_include_directories(run-tests PRIVATE ext/systemc/src)
+target_link_libraries(run-tests systemc)
+
+# Use C++14 features
+set_property(TARGET run-tests systemc
+        PROPERTY CXX_STANDARD 14)
