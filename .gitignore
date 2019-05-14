@@ -30,3 +30,14 @@
 *.exe
 *.out
 *.app
+
+# External
+ext/cpplint/*
+ext/googletest/*
+ext/systemc/*
+
+# Build
+cmake-build-debug/*
+
+# IDE
+.idea/*
