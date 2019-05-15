@@ -32,9 +32,7 @@
 *.app
 
 # External
-ext/cpplint/*
-ext/googletest/*
-ext/systemc/*
+ext/*
 
 # Build
 cmake-build-debug/*
