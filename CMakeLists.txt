@@ -9,6 +9,13 @@ add_subdirectory(ext/systemc)
 target_include_directories(run-tests PRIVATE ext/systemc/src)
 target_link_libraries(run-tests systemc)
 
-# Use C++14 features
-set_property(TARGET run-tests systemc
+# GTest
+add_subdirectory(ext/googletest)
+target_link_libraries(run-tests gtest_main)
+
+# Use C++14
+set_property(TARGET run-tests systemc gtest
         PROPERTY CXX_STANDARD 14)
+
+# CTest
+add_test(NAME run-tests COMMAND run-tests)

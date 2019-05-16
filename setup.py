@@ -1,6 +1,7 @@
 # Downloads and extracts external dependencies needed to compile.
 # If ext directory already exists, this will fail.
-# On macOS, if you get a SSL: CERTIFICATE_VERIFY_FAILED error, try this: https://stackoverflow.com/a/45018725
+# On macOS, if you get a SSL: CERTIFICATE_VERIFY_FAILED error,
+# try this: https://stackoverflow.com/a/45018725
 
 import urllib.request
 import zipfile
@@ -13,7 +14,7 @@ dependencies = {'systemc': 'https://www.accellera.org/images/downloads/standards
 
 dependency_directory = 'ext'
 print('Creating Dependency Directory: ' + dependency_directory)
-pathlib.Path(dependency_directory).mkdir(exist_ok=False)
+pathlib.Path(dependency_directory).mkdir(exist_ok=True)
 
 for dependency, file_url in dependencies.items():
     print('Downloading file: ' + file_url)
