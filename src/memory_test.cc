@@ -5,11 +5,17 @@
 TEST_F(MemoryFixture, PassTest) { EXPECT_TRUE(true); }
 
 TEST_F(MemoryFixture, InitalReadIsAllFs) {
+  // Create a payload
   auto payload = std::make_shared<tlm::tlm_generic_payload>();
-  auto delay = sc_time(1, SC_SEC);
+  auto delay = SC_ZERO_TIME;
+
+  // Set payload properties to indicate a read command
   payload->set_command(tlm::TLM_READ_COMMAND);
 
+  // Send payload for processing by the device under test.
   GetTestbench().mirror.socket->b_transport(*payload, delay);
+
+  // Assert the data returned is all 0xf's as expected.
   EXPECT_EQ(*reinterpret_cast<uint64_t*>(payload->get_data_ptr()),
             0xffffffffffffffff);
 }
@@ -77,6 +83,8 @@ TEST_F(MemoryFixture, ReadBeforeWriteLatency) {
   EXPECT_EQ(post_read_data, write_data);
 }
 
+// Same test as above but uses multiple threads and waits instead of controlling
+// the advancement of simulation time.
 TEST_F(MemoryFixture, ReadBeforeWriteLatencyWithThreads) {
   const auto address = uint64_t{0};
   auto write_data = address;
