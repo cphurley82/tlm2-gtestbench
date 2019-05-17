@@ -26,4 +26,6 @@ set_property(TARGET run-tests systemc gtest
         PROPERTY CXX_STANDARD 14)
 
 # CTest
+enable_testing()
 add_test(NAME run-tests COMMAND run-tests)
+
