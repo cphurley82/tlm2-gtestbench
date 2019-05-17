@@ -9,6 +9,7 @@ class MemoryFixture : public SystemCFixture {
  public:
  protected:
   void BuildTestbenchTop() override;
+  MemoryTestbench& GetTestbench();
 
  private:
   Memory* memory_;
