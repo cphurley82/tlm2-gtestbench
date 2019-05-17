@@ -5,6 +5,7 @@
 
 #include "ext/googletest/googletest/include/gtest/gtest.h"
 #include "ext/systemc/src/systemc.h"
+#include "ext/systemc/src/tlm.h"
 
 class SystemCFixture : public testing::Test {
  protected:

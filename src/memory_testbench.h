@@ -13,6 +13,14 @@ class MemoryTestbench : public SystemCTestbench {
   struct {
     tlm_utils::simple_initiator_socket<MemoryTestbench> socket;
   } mirror;
+
+ private:
+  // NOLINTNEXTLINE
+  virtual tlm::tlm_sync_enum NbTransportBw(tlm::tlm_generic_payload& trans,
+                                           // NOLINTNEXTLINE
+                                           tlm::tlm_phase& phase,
+                                           // NOLINTNEXTLINE
+                                           sc_time& delay);
 };
 
 #endif  // SRC_MEMORY_TESTBENCH_H_
