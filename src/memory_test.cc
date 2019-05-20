@@ -4,6 +4,11 @@
 
 TEST_F(MemoryFixture, PassTest) { EXPECT_TRUE(true); }
 
+TEST_F(MemoryFixture, SimulatorSanityTest) {
+  sc_spawn([&]() { EXPECT_TRUE(true); });
+  sc_start();
+}
+
 TEST_F(MemoryFixture, InitalReadIsAllFs) {
   // Create a payload
   auto payload = std::make_shared<tlm::tlm_generic_payload>();

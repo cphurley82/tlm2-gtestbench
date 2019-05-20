@@ -33,14 +33,14 @@ TEST_F(MemoryFixture, InitalReadIsAllFs) {
 Before running tlm2-gtestbench you will need to acquire the dependencies, 
 configure and build.
 
-Suppose you put tlm2-gtestbench in directory `${TLM2GTEST_DIR}`. 
+Suppose you put tlm2-gtestbench in directory `${TLM2GTEST_DIR}`:
 
 ### External Dependencies
 
 Download 
 [googletest](https://github.com/google/googletest/archive/release-1.8.1.zip) and 
 [systemc](https://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.3.zip) 
-to the `${TLM2GTEST_DIR}\ext` folder and extract them and rename them to remove
+to the `${TLM2GTEST_DIR}\ext` folder, extract them and rename them to remove
 the version. The `${TLM2GTEST_DIR}` directory structure should look like this:
 
     .
@@ -72,9 +72,9 @@ that can be used to configure and build like this from a unix-like shell:
     cmake ${TLM2GTEST_DIR}  # Generate build scripts.
     make                    # Build tlm2-gtestbench
     
-#### Run
+### Run
 
-Run simply run the tlm2-gtestbench suite by running `run-tests` from the `build`
+Run the tlm2-gtestbench suite by executing `run-tests` from the `build`
 directory: 
 
     $ ./run-tests
@@ -101,3 +101,13 @@ directory:
     [  PASSED  ] 5 tests.
     
     $
+
+## Creating Tests
+
+Test will required a few pieces:
+  * DUT: The TLM2 module to test (AKA: device under test).
+  * Testbench: A TLM2 testbench module with an interface which mirrors the DUT.
+  * Fixture: Common configuration used by all test cases. Instantiate the DUT 
+    and Testbench and provides methods for testing.
+    
+
