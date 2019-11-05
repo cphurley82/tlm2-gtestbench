@@ -19,7 +19,7 @@ pathlib.Path(dependency_directory).mkdir(exist_ok=True)
 for dependency, file_url in dependencies.items():
     print('Downloading file: ' + file_url)
     zip_file_path = dependency_directory + '/' + dependency + '.zip'
-    file_handle: object = urllib.request.urlretrieve(file_url, zip_file_path)
+    file_handle_object = urllib.request.urlretrieve(file_url, zip_file_path)
 
     zip_file_object = zipfile.ZipFile(zip_file_path, 'r')
     unzip_directory = dependency_directory + '/' + str(zip_file_object.namelist()[0]).strip('/')
