@@ -42,3 +42,8 @@ cmake-build-debug/*
 
 # Mac
 .DS_Store
+
+# Build files
+*build*/**
+
+
