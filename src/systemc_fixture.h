@@ -3,16 +3,18 @@
 
 // Base class for all module test fixtures.
 
-#include "ext/googletest/googletest/include/gtest/gtest.h"
-#include "ext/systemc/src/systemc.h"
-#include "ext/systemc/src/tlm.h"
+#include <gtest/gtest.h>
+
+#include <systemc>
+#include <tlm>
 
 class SystemCFixture : public testing::Test {
  protected:
   void SetUp() override;     // Build the top level and start simulation.
   void TearDown() override;  // Restart the simulator at the end.
   virtual void BuildTestbenchTop() = 0;  // Construct and bind modules
-  static void AdvanceSimulationTime(const sc_time& timeOffset = sc_max_time());
+  static void AdvanceSimulationTime(
+      const sc_core::sc_time& timeOffset = sc_core::sc_max_time());
 
  private:
   static void RestartSim();

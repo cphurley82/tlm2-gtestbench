@@ -1,7 +1,8 @@
 #ifndef SRC_MEMORY_TESTBENCH_H_
 #define SRC_MEMORY_TESTBENCH_H_
 
-#include "ext/systemc/src/tlm_utils/simple_initiator_socket.h"
+#include <tlm_utils/simple_initiator_socket.h>
+
 #include "src/memory.h"
 #include "src/systemc_testbench.h"
 
@@ -20,7 +21,7 @@ class MemoryTestbench : public SystemCTestbench {
                                            // NOLINTNEXTLINE
                                            tlm::tlm_phase& phase,
                                            // NOLINTNEXTLINE
-                                           sc_time& delay);
+                                           sc_core::sc_time& delay);
 };
 
 #endif  // SRC_MEMORY_TESTBENCH_H_

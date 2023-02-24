@@ -6,6 +6,7 @@ MemoryTestbench::MemoryTestbench(const sc_core::sc_module_name& name)
 }
 
 tlm::tlm_sync_enum MemoryTestbench::NbTransportBw(
-    tlm::tlm_generic_payload& trans, tlm::tlm_phase& phase, sc_time& delay) {
+    tlm::tlm_generic_payload& trans, tlm::tlm_phase& phase,
+    sc_core::sc_time& delay) {
   return tlm::TLM_ACCEPTED;
 }

@@ -1,6 +1,6 @@
 #include "src/memory.h"
 
-Memory::Memory(const sc_module_name& name)
+Memory::Memory(const sc_core::sc_module_name& name)
     : sc_module(name),
       init_data_(0xffffffffffffffff),
       work_queue_with_cb_(this, &Memory::WorkQueueCallback) {
@@ -8,16 +8,17 @@ Memory::Memory(const sc_module_name& name)
   socket.register_nb_transport_fw(this, &Memory::NbTransportFw);
 }
 
-void Memory::BTransport(tlm::tlm_generic_payload& payload, sc_time& delay) {
+void Memory::BTransport(tlm::tlm_generic_payload& payload,
+                        sc_core::sc_time& delay) {
   ExecuteCommand(&payload);
 }
 
 tlm::tlm_sync_enum Memory::NbTransportFw(tlm::tlm_generic_payload& payload,
                                          tlm::tlm_phase& phase,
-                                         sc_time& delay) {
-  auto latency = SC_ZERO_TIME;
+                                         sc_core::sc_time& delay) {
+  auto latency = sc_core::SC_ZERO_TIME;
   if (payload.get_command() == tlm::TLM_WRITE_COMMAND) {
-    latency = sc_time(1, SC_SEC);
+    latency = sc_core::sc_time(1, sc_core::SC_SEC);
   }
 
   // Queue the payload until the delay has elapsed

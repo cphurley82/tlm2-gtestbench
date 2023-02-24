@@ -1,5 +1,6 @@
-#include "ext/googletest/googletest/include/gtest/gtest.h"
-#include "ext/systemc/src/systemc.h"
+#include <gtest/gtest.h>
+
+#include <systemc>
 
 int sc_main(int argc, char** argv) {
   testing::InitGoogleTest(&argc, argv);

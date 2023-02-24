@@ -1,11 +1,11 @@
 #ifndef SRC_SYSTEMC_TESTBENCH_H_
 #define SRC_SYSTEMC_TESTBENCH_H_
 
-#include "ext/systemc/src/systemc.h"
+#include <systemc>
 
 class SystemCTestbench : public sc_core::sc_module {
  public:
-  explicit SystemCTestbench(const sc_module_name &nm);
+  explicit SystemCTestbench(const sc_core::sc_module_name &nm);
 };
 
 #endif  // SRC_SYSTEMC_TESTBENCH_H_
